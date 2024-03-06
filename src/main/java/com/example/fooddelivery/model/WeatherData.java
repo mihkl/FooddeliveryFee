@@ -31,15 +31,7 @@ public class WeatherData {
         this.weatherPhenomenon = weatherPhenomenon;
         this.timestamp = timestamp;
     }
-    public Long getId() {
-        return id;
-    }
-    public String getStationName() {
-        return stationName;
-    }
-    public String getWmoCode() {
-        return wmoCode;
-    }
+
     public double getAirTemperature() {
         return airTemperature;
     }
@@ -48,8 +40,5 @@ public class WeatherData {
     }
     public String getWeatherPhenomenon() {
         return weatherPhenomenon;
-    }
-    public Date getTimestamp() {
-        return timestamp;
     }
 }
