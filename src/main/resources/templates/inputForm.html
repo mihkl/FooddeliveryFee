@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delivery Fee Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+        }
+        h2 {
+            margin-top: 0;
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+        }
+        select,
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Select City and Transport Type</h2>
+    <form action="/calculate-delivery-fee" method="post">
+        <label for="city">City:</label>
+        <select id="city" name="city">
+            <option value="Tallinn-Harku">Tallinn</option>
+            <option value="Tartu-Tõravere">Tartu</option>
+            <option value="Pärnu">Pärnu</option>
+        </select><br><br>
+        <label for="vehicleType">Transport Type:</label>
+        <select id="vehicleType" name="vehicleType">
+            <option value="Car">Car</option>
+            <option value="Scooter">Scooter</option>
+            <option value="Bike">Bike</option>
+        </select><br><br>
+        <button type="submit">Calculate Delivery Fee</button>
+    </form>
+</div>
+</body>
+</html>
