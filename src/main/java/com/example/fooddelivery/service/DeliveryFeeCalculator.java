@@ -51,24 +51,23 @@ public class DeliveryFeeCalculator {
         double windSpeed = weatherData.getWindSpeed();
         double airTemp = weatherData.getAirTemperature();
         String phenomenon = weatherData.getWeatherPhenomenon();
+        System.out.println(windSpeed);
+        System.out.println(airTemp);
+        System.out.println(phenomenon);
 
         double extraFee = 0.0;
         if ((vehicleType.equals("Scooter") || vehicleType.equals("Bike"))) {
 
             if (phenomenon.contains("Glaze") || phenomenon.contains("Thunder") || phenomenon.contains("Hail")) {return -1;}
-
             if (airTemp < 0.0 && airTemp > -10.0) {extraFee += 0.5;}
-
             else if (airTemp < -10.0) {extraFee += 1.0;}
 
             if (phenomenon.contains("snowfall") || phenomenon.contains("snow") || phenomenon.contains("sleet")) {extraFee += 1.0;}
-
             else if (phenomenon.contains("rain") || phenomenon.contains("shower") && !phenomenon.contains("snow")) {extraFee += 0.5;}
 
             if ((vehicleType.equals("Bike"))){
 
                 if (windSpeed > 20 ) {return -1;}
-
                 if (windSpeed > 10.0) {extraFee += 1.0;}
             }
 
