@@ -18,7 +18,7 @@ public class CronJobConfig {
 
     @Scheduled(cron = "0 * * * * *")//(cron = "0 15 * * * *")
     public void importWeatherData() {
-        System.out.println("Importing weather data...");
+        System.out.println("Importing weather data");
         String apiUrl = "https://www.ilmateenistus.ee/ilma_andmed/xml/observations.php";
         String weatherDataXml = new RestTemplate().getForObject(apiUrl, String.class);
 
