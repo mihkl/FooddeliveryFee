@@ -2,7 +2,6 @@ package com.example.fooddelivery.service;
 
 import com.example.fooddelivery.model.WeatherData;
 import com.example.fooddelivery.repository.WeatherDataRepository;
-import com.example.fooddelivery.service.WeatherDataParser;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 
@@ -41,26 +40,5 @@ class WeatherDataParserTests {
         WeatherDataParser.parseAndSaveWeatherData(xmlData, weatherDataRepository);
 
         verify(weatherDataRepository, never()).save(any());
-    }
-    @Test
-    void parseAndSaveWeatherDataValidDataNoError() {
-
-        String xmlData = "<observations><station><name>Tallinn-Harku</name><wmocode>12345</wmocode><airtemperature>10.5" +
-                "</airtemperature><windspeed>8.0</windspeed><phenomenon>Sunny</phenomenon></station></observations>";
-        WeatherDataRepository weatherDataRepository = mock(WeatherDataRepository.class);
-
-        WeatherDataParser.parseAndSaveWeatherData(xmlData, weatherDataRepository);
-
-        assertFalse(WeatherDataParser.ReturnErrorStatus());
-    }
-    @Test
-    void parseAndSaveWeatherDataInvalidDataError() {
-
-        String xmlData = "<invalidXML>";
-        WeatherDataRepository weatherDataRepository = mock(WeatherDataRepository.class);
-
-        WeatherDataParser.parseAndSaveWeatherData(xmlData, weatherDataRepository);
-
-        assertTrue(WeatherDataParser.ReturnErrorStatus());
     }
 }

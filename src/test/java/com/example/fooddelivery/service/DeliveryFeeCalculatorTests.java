@@ -104,5 +104,21 @@ class DeliveryFeeCalculatorTests {
         double expectedFee = 3.5;
         assertEquals(expectedFee, deliveryFeeCalculator.calculateDeliveryFee(city, vehicleType));
     }
+    @Test
+    void calculateDeliveryError() {
+        String city = "";
+        String vehicleType = "";
+
+        WeatherData weatherData = new WeatherData();
+        weatherData.setWindSpeed(100);
+        weatherData.setAirTemperature(5.0);
+        weatherData.setWeatherPhenomenon("Mist");
+
+        when(weatherDataRepository.findLatestWeatherDataByStationName(city, PageRequest.of(0, 1)))
+                .thenReturn(Collections.singletonList(weatherData));
+
+        double expectedFee = 0.0;
+        assertEquals(expectedFee, deliveryFeeCalculator.calculateDeliveryFee(city, vehicleType));
+    }
 }
 

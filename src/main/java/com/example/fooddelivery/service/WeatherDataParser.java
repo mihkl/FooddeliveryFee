@@ -15,7 +15,6 @@ import java.util.Date;
 
 @Service
 public class WeatherDataParser {
-    static boolean isError = false;
     public static void parseAndSaveWeatherData(String xmlData, WeatherDataRepository weatherDataRepository) {
 
         try {
@@ -44,12 +43,8 @@ public class WeatherDataParser {
                 }
             }
         } catch (Exception e) {
-            isError = true;
             System.out.println("Error parsing data");
         }
-    }
-    public static boolean ReturnErrorStatus(){
-        return isError;
     }
     private static boolean isDesiredCity(String cityName) {
         return cityName.equals("Tallinn-Harku") ||

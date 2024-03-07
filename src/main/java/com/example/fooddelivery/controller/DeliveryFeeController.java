@@ -39,7 +39,7 @@ public class DeliveryFeeController {
         if (deliveryFee == -1){
             return showWarning();
         }
-        if(WeatherDataParser.ReturnErrorStatus()){
+        if(deliveryFee == 0){
             return showError();
         }
         model.addAttribute("city", city);

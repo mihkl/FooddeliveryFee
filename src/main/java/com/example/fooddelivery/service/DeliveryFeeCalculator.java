@@ -13,6 +13,9 @@ public class DeliveryFeeCalculator {
     }
     public double calculateDeliveryFee(String city, String vehicleType) {
         WeatherData weatherData = weatherDataRepository.findLatestWeatherDataByStationName(city, PageRequest.of(0, 1)).getFirst();
+        if (weatherData.equals(null)){
+            return 0;
+        }
 
         double baseFee = calculateBaseFee(city, vehicleType);
         double extraFee = calculateExtraFee(weatherData, vehicleType);
