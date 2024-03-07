@@ -2,6 +2,7 @@ package com.example.fooddelivery.service;
 
 import com.example.fooddelivery.model.WeatherData;
 import com.example.fooddelivery.repository.WeatherDataRepository;
+import com.example.fooddelivery.service.DeliveryFeeCalculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
