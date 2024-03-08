@@ -1,7 +1,7 @@
-package com.example.fooddelivery.service;
+package MJ.fooddelivery.service;
 
-import com.example.fooddelivery.model.WeatherData;
-import com.example.fooddelivery.repository.WeatherDataRepository;
+import MJ.fooddelivery.repository.WeatherDataRepository;
+import MJ.fooddelivery.model.WeatherData;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 

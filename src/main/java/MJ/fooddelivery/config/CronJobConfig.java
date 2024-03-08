@@ -1,7 +1,7 @@
-package com.example.fooddelivery.config;
+package MJ.fooddelivery.config;
 
-import com.example.fooddelivery.repository.WeatherDataRepository;
-import com.example.fooddelivery.service.WeatherDataParser;
+import MJ.fooddelivery.repository.WeatherDataRepository;
+import MJ.fooddelivery.service.WeatherDataParser;
 import jakarta.annotation.PostConstruct;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.Scheduled;

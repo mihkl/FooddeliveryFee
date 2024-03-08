@@ -1,7 +1,6 @@
-package com.example.fooddelivery.controller;
+package MJ.fooddelivery.controller;
 
-import com.example.fooddelivery.service.DeliveryFeeCalculator;
-import com.example.fooddelivery.service.WeatherDataParser;
+import MJ.fooddelivery.service.DeliveryFeeCalculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

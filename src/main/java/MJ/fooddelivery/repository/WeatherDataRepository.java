@@ -1,6 +1,6 @@
-package com.example.fooddelivery.repository;
+package MJ.fooddelivery.repository;
 
-import com.example.fooddelivery.model.WeatherData;
+import MJ.fooddelivery.model.WeatherData;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

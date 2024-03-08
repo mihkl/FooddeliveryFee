@@ -1,6 +1,6 @@
-package com.example.fooddelivery.config;
+package MJ.fooddelivery.config;
 
-import com.example.fooddelivery.service.WeatherDataParser;
+import MJ.fooddelivery.service.WeatherDataParser;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

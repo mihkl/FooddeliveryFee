@@ -1,7 +1,7 @@
-package com.example.fooddelivery.service;
+package MJ.fooddelivery.service;
 
-import com.example.fooddelivery.model.WeatherData;
-import com.example.fooddelivery.repository.WeatherDataRepository;
+import MJ.fooddelivery.model.WeatherData;
+import MJ.fooddelivery.repository.WeatherDataRepository;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 @Service

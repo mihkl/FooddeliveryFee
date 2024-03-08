@@ -1,4 +1,4 @@
-package com.example.fooddelivery.model;
+package MJ.fooddelivery.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
