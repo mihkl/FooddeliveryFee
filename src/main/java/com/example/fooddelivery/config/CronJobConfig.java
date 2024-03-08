@@ -10,15 +10,13 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class CronJobConfig {
     private final WeatherDataRepository weatherDataRepository;
-
     public CronJobConfig(WeatherDataRepository weatherDataRepository) {this.weatherDataRepository = weatherDataRepository;}
-
     @PostConstruct
     public void init() {importWeatherData();}
 
-    @Scheduled(cron = "0 * * * * *")//(cron = "0 15 * * * *")
+    @Scheduled(cron = "0 * * * * *")//(cron = "0 15 * * * *") to import on the 15th minute of each hour
     public void importWeatherData() {
-        System.out.println("Importing weather data");
+        System.out.println("Importing weather data"); //for debugging
         String apiUrl = "https://www.ilmateenistus.ee/ilma_andmed/xml/observations.php";
         String weatherDataXml = new RestTemplate().getForObject(apiUrl, String.class);
 

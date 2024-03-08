@@ -13,13 +13,13 @@ public class DeliveryFeeCalculator {
     }
     public double calculateDeliveryFee(String city, String vehicleType) {
         WeatherData weatherData = weatherDataRepository.findLatestWeatherDataByStationName(city, PageRequest.of(0, 1)).getFirst();
-        if (weatherData.equals(null)){
+        if (weatherData.equals(null)){ //means that no valid weatherdata exists
             return 0;
         }
 
         double baseFee = calculateBaseFee(city, vehicleType);
         double extraFee = calculateExtraFee(weatherData, vehicleType);
-        if (extraFee == -1){
+        if (extraFee == -1){ //means that a warning should be displayed, because of severe conditions
             return -1;
         }
         return baseFee + extraFee;
@@ -54,7 +54,7 @@ public class DeliveryFeeCalculator {
         double windSpeed = weatherData.getWindSpeed();
         double airTemp = weatherData.getAirTemperature();
         String phenomenon = weatherData.getWeatherPhenomenon();
-        System.out.println(windSpeed);
+        System.out.println(windSpeed); //for debugging
         System.out.println(airTemp);
         System.out.println(phenomenon);
 

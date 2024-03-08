@@ -8,21 +8,19 @@
 	<name>demo</name>
 	<description>Demo project for Spring Boot</description>
 
-	<!-- Inherit from Spring Boot starter parent -->
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.3</version> <!-- Update to the latest Spring Boot version -->
-		<relativePath/> <!-- lookup parent from repository -->
+		<version>3.2.3</version>
+		<relativePath/>
 	</parent>
 
 	<properties>
-		<!-- Define Java version -->
-		<java.version>21</java.version> <!-- Update to your desired Java version -->
+
+		<java.version>21</java.version>
 	</properties>
 
 	<dependencies>
-		<!-- Spring Boot starters -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -36,14 +34,12 @@
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 
-		<!-- Additional dependencies -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 
-		<!-- Hibernate Validator -->
 		<dependency>
 			<groupId>org.hibernate.validator</groupId>
 			<artifactId>hibernate-validator</artifactId>
