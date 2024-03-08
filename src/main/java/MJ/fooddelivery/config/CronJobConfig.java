@@ -9,8 +9,12 @@ import org.springframework.web.client.RestTemplate;
 
 @Configuration
 public class CronJobConfig {
+
+    private final WeatherDataParser weatherDataParser;
     private final WeatherDataRepository weatherDataRepository;
-    public CronJobConfig(WeatherDataRepository weatherDataRepository) {this.weatherDataRepository = weatherDataRepository;}
+    public CronJobConfig(WeatherDataParser weatherDataParser, WeatherDataRepository weatherDataRepository) {
+        this.weatherDataParser = weatherDataParser;
+        this.weatherDataRepository = weatherDataRepository;}
     @PostConstruct
     public void init() {importWeatherData();}
 
@@ -20,6 +24,6 @@ public class CronJobConfig {
         String apiUrl = "https://www.ilmateenistus.ee/ilma_andmed/xml/observations.php";
         String weatherDataXml = new RestTemplate().getForObject(apiUrl, String.class);
 
-        WeatherDataParser.parseAndSaveWeatherData(weatherDataXml, weatherDataRepository);
+        weatherDataParser.parseAndSaveWeatherData(weatherDataXml, weatherDataRepository);
     }
 }

@@ -15,7 +15,7 @@ import java.util.Date;
 
 @Service
 public class WeatherDataParser {
-    public static void parseAndSaveWeatherData(String xmlData, WeatherDataRepository weatherDataRepository) {
+    public void parseAndSaveWeatherData(String xmlData, WeatherDataRepository weatherDataRepository) {
 
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
