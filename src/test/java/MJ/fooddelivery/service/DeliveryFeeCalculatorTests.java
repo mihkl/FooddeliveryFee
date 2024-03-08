@@ -4,6 +4,7 @@ import MJ.fooddelivery.model.WeatherData;
 import MJ.fooddelivery.repository.WeatherDataRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.data.domain.PageRequest;
@@ -17,11 +18,12 @@ class DeliveryFeeCalculatorTests {
 
     @Mock
     private WeatherDataRepository weatherDataRepository;
+    @InjectMocks
     private DeliveryFeeCalculator deliveryFeeCalculator;
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
-        deliveryFeeCalculator = new DeliveryFeeCalculator(weatherDataRepository);
+
     }
     @Test
     void calculateDeliveryFeeNoExtraFee() {
@@ -40,22 +42,6 @@ class DeliveryFeeCalculatorTests {
         assertEquals(expectedFee, deliveryFeeCalculator.calculateDeliveryFee(city, vehicleType));
     }
     @Test
-    void calculateDeliveryFeeExtraFeeDueToSnowfall() {
-        String city = "Tartu-Tõravere";
-        String vehicleType = "Bike";
-
-        WeatherData weatherData = new WeatherData();
-        weatherData.setWindSpeed(5.0);
-        weatherData.setAirTemperature(-5.0);
-        weatherData.setWeatherPhenomenon("snowfall");
-
-        when(weatherDataRepository.findLatestWeatherDataByStationName(city, PageRequest.of(0, 1)))
-                .thenReturn(Collections.singletonList(weatherData));
-
-        double expectedFee = 2.0 + 1.5;
-        assertEquals(expectedFee, deliveryFeeCalculator.calculateDeliveryFee(city, vehicleType));
-    }
-    @Test
     void calculateDeliveryFeeWarningDueToHail() {
         String city = "Pärnu";
         String vehicleType = "Bike";
@@ -69,6 +55,22 @@ class DeliveryFeeCalculatorTests {
                 .thenReturn(Collections.singletonList(weatherData));
 
         double expectedFee = -1;
+        assertEquals(expectedFee, deliveryFeeCalculator.calculateDeliveryFee(city, vehicleType));
+    }
+    @Test
+    void calculateDeliveryFeeExtraFeeDueToSnowfall() {
+        String city = "Tartu-Tõravere";
+        String vehicleType = "Bike";
+
+        WeatherData weatherData = new WeatherData();
+        weatherData.setWindSpeed(5.0);
+        weatherData.setAirTemperature(-5.0);
+        weatherData.setWeatherPhenomenon("snowfall");
+
+        when(weatherDataRepository.findLatestWeatherDataByStationName(city, PageRequest.of(0, 1)))
+                .thenReturn(Collections.singletonList(weatherData));
+
+        double expectedFee = 3.5;
         assertEquals(expectedFee, deliveryFeeCalculator.calculateDeliveryFee(city, vehicleType));
     }
     @Test
