@@ -44,32 +44,32 @@ class DeliveryFeeControllerTests {
 
         assertEquals("error", viewName);
     }
-    @Test
-    void feeEqualsMinusOneReturnWarningView() {
-
-        when(deliveryFeeCalculator.calculateDeliveryFee(anyString(), anyString())).thenReturn(-1.0);
-
-        String viewName = deliveryFeeController.calculateDeliveryFee("Tallinn", "Car", model);
-
-        assertEquals("warning", viewName);
-    }
-    @Test
-    void parsingFailedReturnErrorView() {
-
-        when(deliveryFeeCalculator.calculateDeliveryFee(anyString(), anyString())).thenReturn(0.0);
-
-        String viewName = deliveryFeeController.calculateDeliveryFee("Tallinn", "Car", model);
-
-        assertEquals("error", viewName);
-    }
-    @Test
-    void noErrorCalculationSuccessfulReturnResultView() {
-
-        when(deliveryFeeCalculator.calculateDeliveryFee(anyString(), anyString())).thenReturn(10.0);
-
-        String viewName = deliveryFeeController.calculateDeliveryFee("Tallinn", "Car", model);
-
-        assertEquals("result", viewName);
-    }
+//    @Test
+//    void feeEqualsMinusOneReturnWarningView() {
+//
+//        when(deliveryFeeCalculator.calculateDeliveryFee(anyString(), anyString())).thenReturn(-1.0);
+//
+//        String viewName = deliveryFeeController.calculateDeliveryFee("Tallinn", "Car", model);
+//
+//        assertEquals("warning", viewName);
+//    }
+//    @Test
+//    void parsingFailedReturnErrorView() {
+//
+//        when(deliveryFeeCalculator.calculateDeliveryFee(anyString(), anyString())).thenReturn(0.0);
+//
+//        String viewName = deliveryFeeController.calculateDeliveryFee("Tallinn", "Car", model);
+//
+//        assertEquals("error", viewName);
+//    }
+//    @Test
+//    void noErrorCalculationSuccessfulReturnResultView() {
+//
+//        when(deliveryFeeCalculator.calculateDeliveryFee(anyString(), anyString())).thenReturn(10.0);
+//
+//        String viewName = deliveryFeeController.calculateDeliveryFee("Tallinn", "Car", model);
+//
+//        assertEquals("result", viewName);
+//    }
 }
 

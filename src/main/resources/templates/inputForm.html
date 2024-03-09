@@ -52,7 +52,7 @@
 <body>
 <div class="container">
     <h2>Select City and Transport Type</h2>
-    <form action="/result" method="post">
+    <form id="deliveryForm" method="post">
         <label for="city">City:</label>
         <select id="city" name="city">
             <option value="Tallinn-Harku">Tallinn</option>
@@ -65,8 +65,21 @@
             <option value="Scooter">Scooter</option>
             <option value="Bike">Bike</option>
         </select><br><br>
-        <button type="submit">Calculate Delivery Fee</button>
+        <button type="button" onclick="submitForm('json')">Calculate Delivery Fee (JSON)</button>
+        <button type="button" onclick="submitForm('html')">Calculate Delivery Fee (HTML)</button>
     </form>
 </div>
+
+<script>
+    function submitForm(format) {
+        const form = document.getElementById('deliveryForm');
+        if (format === 'json') {
+            form.action = '/result/json';
+        } else {
+            form.action = '/result';
+        }
+        form.submit();
+    }
+</script>
 </body>
 </html>
