@@ -9,6 +9,8 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.web.client.RestTemplate;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -25,10 +27,8 @@ class CronJobConfigTests {
     }
     @Test
     void importWeatherDataCallParserAndRepository() {
-        String apiUrl = "https://www.ilmateenistus.ee/ilma_andmed/xml/observations.php";
-        String testXML = new RestTemplate().getForObject(apiUrl, String.class);
 
         cronJobConfig.importWeatherData();
-        verify(weatherDataParser, times(1)).parseAndSaveWeatherData(testXML, weatherDataRepository);
+        verify(weatherDataParser, times(1)).parseAndSaveWeatherData(anyString(), any());
     }
 }
