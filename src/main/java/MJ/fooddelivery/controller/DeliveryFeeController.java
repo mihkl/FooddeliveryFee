@@ -40,6 +40,8 @@ public class DeliveryFeeController {
     @Tag(name = "DeliveryFee", description = "Deliveryfee API")
     @Operation(summary = "Submit input parameters for calculating fee", description = "Posts input parameters for calculating fee and return a view with the calculated results.")
     @RequestMapping(value = "/result", method = {RequestMethod.POST, RequestMethod.GET})
+    //Post for submitting the form and Get for using an url like
+    // http://localhost:8080/result/json?city=Tallinn-Harku&vehicleType=Bike
     public String calculateDeliveryFee(
            @RequestParam String city,
            @RequestParam String vehicleType, Model model) {
@@ -58,6 +60,8 @@ public class DeliveryFeeController {
     @Tag(name = "DeliveryFee", description = "Deliveryfee API")
     @Operation(summary = "Submit input parameters for calculating fee in JSON", description = "Posts input parameters for calculating fee and return the calculated results in JSON format.")
     @RequestMapping(value = "/result/json", method = {RequestMethod.POST, RequestMethod.GET})
+    //Post for submitting the form and Get for using an url like
+    // http://localhost:8080/result/json?city=Tallinn-Harku&vehicleType=Bike
     @ResponseBody
     public ResponseEntity<?> calculateDeliveryFeeJSON(
             @RequestParam String city,
