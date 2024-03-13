@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"MJ.fooddelivery"},{"l":"MJ.fooddelivery.config"},{"l":"MJ.fooddelivery.controller"},{"l":"MJ.fooddelivery.model"},{"l":"MJ.fooddelivery.repository"},{"l":"MJ.fooddelivery.service"}];updateSearchResults();
