@@ -44,24 +44,22 @@ public class DeliveryFeeCalculator {
         Double windFeeValue = extraFeeRules.getWindFeeValue();
         Double tempSmallFeeValue = extraFeeRules.getTempSmallFeeValue();
         Double tempBigFeeValue = extraFeeRules.getTempBigFeeValue();
+        Double snowFeeValue = extraFeeRules.getSnowFeeValue();
+        Double rainFeeValue = extraFeeRules.getRainFeeValue();
 
         double extraFee = calculateExtraFee(weatherData, vehicleType, warningWind, windFee, tempSmallFee, tempBigFee,
-                windFeeValue, tempSmallFeeValue, tempBigFeeValue);
+                windFeeValue, tempSmallFeeValue, tempBigFeeValue, snowFeeValue, rainFeeValue);
         if (extraFee == -1) {
             return -1;
         }
         return baseFee + extraFee;
     }
-
     private double calculateExtraFee(WeatherData weatherData, String vehicleType, Double warningWind, Double windFee, Double tempSmallFee,
-                                     Double tempBigFee, Double windFeeValue, Double tempSmallFeeValue, Double tempBigFeeValue) {
-
+                                     Double tempBigFee, Double windFeeValue, Double tempSmallFeeValue, Double tempBigFeeValue, Double snowFeeValue, Double rainFeeValue) {
         double windSpeed = weatherData.getWindSpeed();
         double airTemp = weatherData.getAirTemperature();
         String phenomenon = weatherData.getWeatherPhenomenon();
 
-        System.out.println(windSpeed); //for debugging
-        System.out.println(airTemp);
         System.out.println(phenomenon);
 
         double extraFee = 0.0;
@@ -71,8 +69,8 @@ public class DeliveryFeeCalculator {
             if (airTemp < tempSmallFee && airTemp > tempBigFee) {extraFee += tempSmallFeeValue;}
             else if (airTemp < tempBigFee) {extraFee += tempBigFeeValue;}
 
-            if (phenomenon.contains("snowfall") || phenomenon.contains("snow") || phenomenon.contains("sleet")) {extraFee += 1.0;}
-            else if (phenomenon.contains("rain") || phenomenon.contains("shower") && !phenomenon.contains("snow")) {extraFee += 0.5;}
+            if (phenomenon.contains("snowfall") || phenomenon.contains("snow") || phenomenon.contains("sleet")) {extraFee += snowFeeValue;}
+            else if (phenomenon.contains("rain") || phenomenon.contains("shower") && !phenomenon.contains("snow")) {extraFee += rainFeeValue;}
 
             if ((vehicleType.equals("Bike"))){
 

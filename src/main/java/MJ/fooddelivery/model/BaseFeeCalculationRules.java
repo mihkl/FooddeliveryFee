@@ -19,6 +19,9 @@ public class BaseFeeCalculationRules {
     public double getBaseFee() {
         return baseFee;
     }
+    public void setBaseFee(double baseFee) {
+        this.baseFee = baseFee;
+    }
 
     public String getVehicleType() {
         return vehicleType;
