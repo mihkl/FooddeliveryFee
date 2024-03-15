@@ -8,6 +8,8 @@
 <body>
 <div class="container">
     <h2>Delivery Fee Result</h2>
+    <p>City: <span th:text="${city}"></span></p>
+    <p>Vehicle: <span th:text="${vehicleType}"></span></p>
     <p>The calculated delivery fee is: <span th:text="${deliveryFee+'€'}"></span></p>
     <a href="/inputForm">
         <button>Calculate Again</button>

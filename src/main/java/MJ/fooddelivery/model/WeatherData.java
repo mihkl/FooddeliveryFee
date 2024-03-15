@@ -20,7 +20,6 @@ public class WeatherData {
     private String weatherPhenomenon;
     private Date timestamp;
 
-    // Constructors
     public WeatherData() {
     }
 
@@ -52,9 +51,6 @@ public class WeatherData {
         return timestamp;
     }
 
-    public void setWmoCode(String wmoCode) {
-        this.wmoCode = wmoCode;
-    }
     public void setAirTemperature(double airTemperature) {
         this.airTemperature = airTemperature;
     }
@@ -64,10 +60,5 @@ public class WeatherData {
     public void setWeatherPhenomenon(String phenomenon) {
         this.weatherPhenomenon = phenomenon;
     }
-    public void setStationName(String stationName) {
-        this.stationName = stationName;
-    }
-    public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
-    }
+
 }

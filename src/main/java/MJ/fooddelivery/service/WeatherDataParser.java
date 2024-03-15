@@ -12,7 +12,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.StringReader;
 import java.util.Date;
 
-
 @Service
 public class WeatherDataParser {
     public void parseAndSaveWeatherData(String xmlData, WeatherDataRepository weatherDataRepository) {

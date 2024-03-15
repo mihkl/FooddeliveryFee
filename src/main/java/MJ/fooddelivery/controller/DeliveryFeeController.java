@@ -44,7 +44,9 @@ public class DeliveryFeeController {
     // http://localhost:8080/result/json?city=Tallinn-Harku&vehicleType=Bike
     public String calculateDeliveryFee(
            @RequestParam String city,
-           @RequestParam String vehicleType, Model model) {
+           @RequestParam String vehicleType,
+           Model model)
+    {
         double deliveryFee = deliveryFeeCalculator.calculateDeliveryFee(city, vehicleType);
         if (deliveryFee == -1) {
             return showWarning();
@@ -55,6 +57,7 @@ public class DeliveryFeeController {
         model.addAttribute("city", city);
         model.addAttribute("vehicleType", vehicleType);
         model.addAttribute("deliveryFee", deliveryFee);
+
         return "result";
     }
     @Tag(name = "DeliveryFee", description = "Deliveryfee API")
@@ -65,7 +68,8 @@ public class DeliveryFeeController {
     @ResponseBody
     public ResponseEntity<?> calculateDeliveryFeeJSON(
             @RequestParam String city,
-            @RequestParam String vehicleType) {
+            @RequestParam String vehicleType)
+    {
         double deliveryFee = deliveryFeeCalculator.calculateDeliveryFee(city, vehicleType);
         if (deliveryFee == -1) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Warning: Weather conditions are too dangerous for a certain transport.");

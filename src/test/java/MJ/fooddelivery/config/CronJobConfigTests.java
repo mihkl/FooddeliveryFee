@@ -12,6 +12,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
+
 class CronJobConfigTests {
     @Mock
     private WeatherDataParser weatherDataParser;
