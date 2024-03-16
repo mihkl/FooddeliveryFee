@@ -39,8 +39,19 @@ DeliveryFeeCalculator which contains all of the logic for calculating the fee. I
 The fee calculation is split into 2 parts:
 BaseFee and ExtraFee
 
-##FoodDeliveryApplication
+## FoodDeliveryApplication
 This is the main class which the application is started from.
 
-##Tests
+## Tests
 The Cronjob, Controllers and Services have tests written for them. The tests do not cover all scenarios, but they do cover most common use cases.
+
+## Static and Template files
+There are simple HTML pages with some CSS and a tiny bit of JavaScript, but these could all be removed if the goal is to only use the application to make URL based requests and return simple JSON.
+
+## Database
+The H2 database stores its tables in the data forlder in the resources directory so that they are not lost when the program stops running.
+It has 3 tables, 1 corresponding to each model.
+The database can be accessed by running the program and going to http://localhost:8080/h2-console
+The specifications for logging in are all in the application.properties file in the resources directory.
+Datasource is: "jdbc:h2:file:./src/main/resources/data/weather;AUTO_SERVER=true"
+Username is: "sa" and there is no password.
