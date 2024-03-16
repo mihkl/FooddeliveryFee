@@ -18,7 +18,7 @@ public class CronJobConfig {
     @PostConstruct
     public void init() {importWeatherData();}
 
-    @Scheduled(cron = "0 * * * * *")//(cron = "0 15 * * * *") to import on the 15th minute of each hour
+    @Scheduled(cron = "0 * * * * *")//(cron = "0 15 * * * *") to import on the 15th minute of each hour, current value just for testing
     public void importWeatherData() {
         System.out.println("Importing weather data"); //for debugging
         String apiUrl = "https://www.ilmateenistus.ee/ilma_andmed/xml/observations.php";

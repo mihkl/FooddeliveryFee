@@ -60,7 +60,6 @@ public class DeliveryFeeCalculator {
         double airTemp = weatherData.getAirTemperature();
         String phenomenon = weatherData.getWeatherPhenomenon();
 
-        System.out.println(phenomenon);
 
         double extraFee = 0.0;
         if ((vehicleType.equals("Scooter") || vehicleType.equals("Bike"))) {
@@ -78,7 +77,6 @@ public class DeliveryFeeCalculator {
                 if (windSpeed > windFee) {extraFee += windFeeValue;}
             }
         }
-        System.out.println(extraFee);
         return extraFee;
     }
 }
