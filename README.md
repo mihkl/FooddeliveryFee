@@ -1,4 +1,5 @@
 ## Application to calculate the delivery fee for a certain city and vehicle based on weather data from the Estonian Environment Agency
+JavaDoc: https://github.com/mihkl/FoodDeliveryJavaDoc
 
 ## Project layout
 The project consists of:
