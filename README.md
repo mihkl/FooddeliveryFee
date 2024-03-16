@@ -1,4 +1,4 @@
-### Application to calculate the delivery fee for a certain city and vehicle based on waether data from the Estonian Environment Agency
+## Application to calculate the delivery fee for a certain city and vehicle based on weather data from the Estonian Environment Agency
 
 ## Project layout
 The project consists of:
