@@ -6,7 +6,7 @@ The project consists of:
 ### A CronJob class to periodically import weather data.
 
 ### 2 Controllers
-DeliveyFeeController for managing the main flow of the application, this handles requests for calculating data (you can make a request through the html page or using a URL).
+DeliveyFeeController for managing the main flow of the application, this handles requests for calculating data (you can make a request through the html page or using a URL like http://localhost:8080/result/json?city=Tallinn-Harku&vehicleType=Bike).
 The response is either given as JSON or a formatted HTML view containing the response, up to the user to decide which they prefer.
 
 FeeCalculationController is responsible for updating the business rules in the H2 Database on which fee calculations are done.
