@@ -18,6 +18,9 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
+/**
+ * Unit tests for the FeeCalculationRulesController class.
+ */
 class FeeCalculationRulesControllerTests {
 
     @Mock
@@ -33,9 +36,13 @@ class FeeCalculationRulesControllerTests {
     void setUp() {
         MockitoAnnotations.initMocks(this);
     }
+
+    /**
+     * Test for successful update of base fee.
+     */
     @Test
     void updateBaseFeeSuccess() {
-
+        // Given
         String city = "TestCity";
         String vehicleType = "Car";
         double baseFee = 10.0;
@@ -43,30 +50,42 @@ class FeeCalculationRulesControllerTests {
         BaseFeeCalculationRules baseFeeRules = new BaseFeeCalculationRules();
         when(baseFeeCalculationRulesRepository.findBaseFeeByCityAndVehicleType(city, vehicleType)).thenReturn(baseFeeRules);
 
+        // When
         ResponseEntity<String> response = controller.updateBaseFee(city, vehicleType, baseFee);
 
+        // Then
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals("Base fee updated successfully for city: TestCity and vehicle type: Car", response.getBody());
         verify(baseFeeCalculationRulesRepository, times(1)).save(baseFeeRules);
     }
+
+    /**
+     * Test for error when updating base fee due to non-existing city.
+     */
     @Test
     void updateBaseFeeError() {
-
+        // Given
         String city = "NonExistingCity";
         String vehicleType = "Car";
         double baseFee = 10.0;
 
         when(baseFeeCalculationRulesRepository.findBaseFeeByCityAndVehicleType(city, vehicleType)).thenReturn(null);
 
+        // When
         ResponseEntity<String> response = controller.updateBaseFee(city, vehicleType, baseFee);
 
+        // Then
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
         assertEquals("Base fee rule not found for city: NonExistingCity and vehicle type: Car", response.getBody());
         verify(baseFeeCalculationRulesRepository, never()).save(any());
     }
+
+    /**
+     * Test for successful update of extra fee calculation rules.
+     */
     @Test
     void updateExtraFeeRulesSuccess() {
-
+        // Given
         double tempBigFee = 5.0;
         double tempBigFeeValue = 15.0;
         double tempSmallFee = 3.0;
@@ -79,9 +98,11 @@ class FeeCalculationRulesControllerTests {
         rules.add(new ExtraFeeCalculationRules());
         when(extraFeeCalculationRepository.findAll()).thenReturn(rules);
 
+        // When
         ResponseEntity<String> response = controller.updateExtraFeeRules(
                 tempBigFee, tempBigFeeValue, tempSmallFee, tempSmallFeeValue, windFee, windFeeValue, windWarning);
 
+        // Then
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals("Extra fee calculation rules updated successfully", response.getBody());
         verify(extraFeeCalculationRepository, times(1)).save(any());

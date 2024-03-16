@@ -7,13 +7,24 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.StringReader;
 import java.util.Date;
 
+/**
+ * Service class responsible for parsing XML weather data and saving it to the database.
+ */
 @Service
 public class WeatherDataParser {
+
+    /**
+     * Parses the provided XML weather data and saves it to the database.
+     *
+     * @param xmlData              The XML data containing weather information.
+     * @param weatherDataRepository The repository for storing weather data.
+     */
     public void parseAndSaveWeatherData(String xmlData, WeatherDataRepository weatherDataRepository) {
 
         try {
@@ -45,27 +56,34 @@ public class WeatherDataParser {
             System.out.println("Error parsing data");
         }
     }
+
     private static boolean isDesiredCity(String cityName) {
         return cityName.equals("Tallinn-Harku") ||
                 cityName.equals("Tartu-Tõravere") ||
                 cityName.equals("Pärnu");
     }
+
     private static String getElementTextContent(Element element, String tagName) {
         NodeList nodeList = element.getElementsByTagName(tagName);
         if (nodeList.getLength() > 0) {
             Node node = nodeList.item(0);
             String data = node.getTextContent();
 
-            if (data != null && !data.isEmpty()) {return data;}
+            if (data != null && !data.isEmpty()) {
+                return data;
+            }
         }
         return "No data";
     }
+
     private static double parseDoubleElementTextContent(Element element, String tagName) {
         String textContent = getElementTextContent(element, tagName);
         if (!textContent.isEmpty()) {
             try {
                 return Double.parseDouble(textContent);
-            } catch (NumberFormatException e) {return 0.0;}
+            } catch (NumberFormatException e) {
+                return 0.0;
+            }
         }
         return 0.0;
     }
